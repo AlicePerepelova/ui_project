@@ -33,12 +33,16 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'org.slf4j:slf4j-simple:2.0.7',
             'org.assertj:assertj-core:3.24.2',
+            'org.aeonbits.owner:owner:1.0.12',
             'com.codeborne:selenide:7.7.3'
     )
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
-
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
 tasks.withType(Test) {
     useJUnitPlatform()
 
