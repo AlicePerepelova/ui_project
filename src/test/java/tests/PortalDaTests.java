@@ -18,7 +18,7 @@ public class PortalDaTests extends TestBase {
   ControlPage control = new ControlPage();
 
   @Test
-  @Feature("Проверка поиска товара")
+  @Feature("Проверка поиска товара по категории")
   @Story("Позитивный тест")
   @Owner("@perepelovaAS")
   @Severity(SeverityLevel.CRITICAL)
@@ -35,7 +35,7 @@ public class PortalDaTests extends TestBase {
   }
 
   @Test
-  @Feature("Проверка поиска товара")
+  @Feature("Проверка поиска товара по строке ввода")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
   @Severity(SeverityLevel.CRITICAL)
