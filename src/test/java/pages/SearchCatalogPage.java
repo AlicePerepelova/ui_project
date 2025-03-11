@@ -11,23 +11,22 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchCatalogPage {
-  private final String active="Офисное помещение";
-  private  final SelenideElement searchBarItem = $(".search-bar-item__right");
+  private final String active = "Офисное помещение";
+  private final SelenideElement searchBarItem = $(".search-bar-item__right");
   private final SelenideElement officeRoomOption = $(byText(active));
   private final SelenideElement pageTitleElement = $(".content-layout__title");
   private final ElementsCollection catalogGrid = $$(".catalog-grid");
 
 
   @Step("Ищем {active}")
-  public SearchCatalogPage clickOnSearchBarItem(String nameOfActive) {
+  public void clickOnSearchBarItem(String nameOfActive) {
     searchBarItem.click();
     officeRoomOption.click();
-    return this;
   }
-@Step("Проверяем, что {active} нашлось")
-  public SearchCatalogPage verifyCatalogContainsOfficeRooms(String nameOfActive) {
+
+  @Step("Проверяем, что {active} нашлось")
+  public void verifyCatalogContainsOfficeRooms(String nameOfActive) {
     pageTitleElement.shouldHave(text(nameOfActive));
     catalogGrid.shouldHave(texts(nameOfActive));
-    return this;
   }
 }
