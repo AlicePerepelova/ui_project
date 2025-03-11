@@ -38,25 +38,23 @@ public class FilterPage {
     executionProcedureFilter = $("[test_id='filter_execution_procedure']"),
     primaryDialogButton = $(".base-dialog-card__btn-primary");
 
-  private ElementsCollection minimumPriceInputs = $$("[test_id='filter_price'] input");
+  private final ElementsCollection minimumPriceInputs = $$("[test_id='filter_price'] input");
 
   @Step("Открытие окна фильтров")
-  public FilterPage openFilter() {
+  public void openFilter() {
     filterButton.click();
     filterDialogCard.shouldBe(visible);
-    return this;
   }
 
   @Step("Выбор региона")
-  public FilterPage selectRegion() {
+  public void selectRegion() {
     regionDropdown.shouldBe(visible).click();
     moscowOption.click();
     readyButton.click();
-    return this;
   }
 
   @Step("Выбор диапазона цены")
-  public FilterPage selectPriceRange() {
+  public void selectPriceRange() {
     priceFilter.shouldBe(interactable);
     priceFilter.click();
     priceDropdownCard.shouldBe(visible);
@@ -67,22 +65,20 @@ public class FilterPage {
     }
     minimumPriceInputs.get(1).setValue("55555");
     readyButton.click();
-    return this;
   }
 
   @Step("Выбор метода продаж")
-  public FilterPage selectSaleMethod() {
+  public void selectSaleMethod() {
     saleTypeDropdown.shouldBe(interactable);
     saleTypeDropdown.click();
     directPurchaseOption.click();
     tradeOption.click();
     biddingOption.click();
     readyButton.click();
-    return this;
   }
 
   @Step("Выбор продавца")
-  public FilterPage verifySellerSelection() {
+  public void verifySellerSelection() {
     sellerFilter.shouldBe(interactable);
     sellerFilter.click();
     sellerSearchBar.shouldBe(interactable);
@@ -94,30 +90,25 @@ public class FilterPage {
     userSellerOption.click();
     otherSellerOption.click();
     readyButton.click();
-    return this;
   }
 
   @Step("Проверка статуса залога")
-  public FilterPage verifyPledgeStatus() {
+  public void verifyPledgeStatus() {
     pledgeStatusFilter.shouldHave(text("Да")).click();
-    return this;
   }
 
   @Step("Проверка наличия банкротства")
-  public FilterPage verifyBankruptcy() {
+  public void verifyBankruptcy() {
     bankruptcyFilter.shouldHave(text("Да")).click();
-    return this;
   }
 
   @Step("Проверка процедуры исполнения")
-  public FilterPage verifyExecutionProcedure() {
+  public void verifyExecutionProcedure() {
     executionProcedureFilter.shouldHave(text("Да")).click();
-    return this;
   }
 
   @Step("Нажать кнопку показать")
-  public FilterPage clickShowButton() {
+  public void clickShowButton() {
     primaryDialogButton.click();
-    return this;
   }
 }

@@ -6,27 +6,22 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.CookiePopUp;
-import pages.FilterPage;
-import pages.SearchCatalogPage;
-import pages.SearchInputPage;
+import pages.*;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PortalDaTests extends TestBase {
   CookiePopUp cookie = new CookiePopUp();
   SearchCatalogPage search = new SearchCatalogPage();
-  FilterPage filter=new FilterPage();
-  SearchInputPage searchInput=new SearchInputPage();
+  FilterPage filter = new FilterPage();
+  SearchInputPage searchInput = new SearchInputPage();
+  ControlPage control = new ControlPage();
 
   @Test
   @Feature("Проверка поиска товара")
   @Story("Позитивный тест")
   @Owner("@perepelovaAS")
   @Severity(SeverityLevel.CRITICAL)
-  @Link(url = "https://portal-da.ru")
   @DisplayName("Проверка поиска {active} по категории каталога")
   void searchCatalogTest() {
 
@@ -44,7 +39,6 @@ public class PortalDaTests extends TestBase {
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
   @Severity(SeverityLevel.CRITICAL)
-  @Link(url = "https://portal-da.ru")
   @DisplayName("Проверка поиска {} по строке ввода")
   void searchByInputString() {
     open("/");
@@ -57,24 +51,20 @@ public class PortalDaTests extends TestBase {
   }
 
   @Test
+  @Tag("POSITIVE")
+  @Story("Позитивный тест")
+  @Owner("@perepelovaas")
+  @Severity(SeverityLevel.TRIVIAL)
   @DisplayName("Проверка контроллов")
   void checkControl() {
     Configuration.pollingInterval = 500;
     open("/");
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
-    $(".search-bar-item__right").click();
-    $(byText("Офисное помещение")).click();
-    sleep(1500);
-    $(".v-select__slot").shouldBe(visible);
-    $(".v-select__slot").scrollIntoView(true);
-
-    $(".v-input__control").shouldBe(visible);
-    $(".v-input__control").click();
-    $(byText("54")).click();
-    sleep(1500);
-    $(".listing-footer-controls__count").shouldHave(text("Показано 54"));
-
+    control.searchItem();
+    control.selectControl();
+    control.checkControl();
+    Selenide.clearBrowserCookies();
     closeWebDriver();
   }
 
