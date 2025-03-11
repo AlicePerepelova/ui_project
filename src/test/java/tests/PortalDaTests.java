@@ -6,20 +6,20 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Keys;
 import pages.CookiePopUp;
 import pages.FilterPage;
-import pages.SearchCatalog;
+import pages.SearchCatalogPage;
+import pages.SearchInputPage;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PortalDaTests extends TestBase {
   CookiePopUp cookie = new CookiePopUp();
-  SearchCatalog search = new SearchCatalog();
+  SearchCatalogPage search = new SearchCatalogPage();
   FilterPage filter=new FilterPage();
+  SearchInputPage searchInput=new SearchInputPage();
 
   @Test
   @Feature("Проверка поиска товара")
@@ -42,18 +42,16 @@ public class PortalDaTests extends TestBase {
   @Test
   @Feature("Проверка поиска товара")
   @Story("Позитивный тест")
-  @Owner("@egorovma")
+  @Owner("@perepelovaas")
   @Severity(SeverityLevel.CRITICAL)
-  @Link(url = "https://sport-marafon.ru/")
+  @Link(url = "https://portal-da.ru")
   @DisplayName("Проверка поиска {} по строке ввода")
   void searchByInputString() {
     open("/");
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
-    $(".text-input__input").click();
-    $("#query").setValue("Офисное помещение");
-    $(".ml-4").click();
-    $$(".catalog-grid").shouldHave(texts("Офисное помещение"));
+    searchInput.searchValue();
+    searchInput.checkSearchResult();
     Selenide.clearBrowserCookies();
     Selenide.closeWebDriver();
   }
@@ -80,13 +78,12 @@ public class PortalDaTests extends TestBase {
     closeWebDriver();
   }
 
-  Test
+  @Test
   @Tag("POSITIVE")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
   @Severity(SeverityLevel.BLOCKER)
   @DisplayName("Проверка фильтра")
-
   void checkFilter() {
     open("/");
     cookie.checkCookiePopupDisplay();

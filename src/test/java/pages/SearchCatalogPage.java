@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class SearchCatalog {
+public class SearchCatalogPage {
   private final String active="Офисное помещение";
   private  final SelenideElement searchBarItem = $(".search-bar-item__right");
   private final SelenideElement officeRoomOption = $(byText(active));
@@ -19,13 +19,13 @@ public class SearchCatalog {
 
 
   @Step("Ищем {active}")
-  public SearchCatalog clickOnSearchBarItem(String nameOfActive) {
+  public SearchCatalogPage clickOnSearchBarItem(String nameOfActive) {
     searchBarItem.click();
     officeRoomOption.click();
     return this;
   }
 @Step("Проверяем, что {active} нашлось")
-  public SearchCatalog verifyCatalogContainsOfficeRooms(String nameOfActive) {
+  public SearchCatalogPage verifyCatalogContainsOfficeRooms(String nameOfActive) {
     pageTitleElement.shouldHave(text(nameOfActive));
     catalogGrid.shouldHave(texts(nameOfActive));
     return this;
