@@ -4,9 +4,11 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import pages.CookiePopUp;
+import pages.FilterPage;
 import pages.SearchCatalog;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -14,10 +16,10 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Portal_daTests extends TestBase {
+public class PortalDaTests extends TestBase {
   CookiePopUp cookie = new CookiePopUp();
-  SearchCatalog search=new SearchCatalog();
-
+  SearchCatalog search = new SearchCatalog();
+  FilterPage filter=new FilterPage();
 
   @Test
   @Feature("Проверка поиска товара")
@@ -31,8 +33,8 @@ public class Portal_daTests extends TestBase {
     open("/");
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
-    search.clickOnSearchBarItem();
-    search.verifyCatalogContainsOfficeRooms();
+    search.clickOnSearchBarItem("Офисное помещение");
+    search.verifyCatalogContainsOfficeRooms("Офисное помещение");
     Selenide.clearBrowserCookies();
     Selenide.closeWebDriver();
   }
@@ -77,65 +79,26 @@ public class Portal_daTests extends TestBase {
 
     closeWebDriver();
   }
-  @Test
-  @DisplayName("Проверка поиска {} в локации {}")
-  void checkSearchWithLocation() {
+
+  Test
+  @Tag("POSITIVE")
+  @Story("Позитивный тест")
+  @Owner("@perepelovaas")
+  @Severity(SeverityLevel.BLOCKER)
+  @DisplayName("Проверка фильтра")
+
+  void checkFilter() {
     open("/");
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
-    $(byText("Фильтры")).click();
-    $(".base-dialog-card--nopadding").shouldBe(visible);
-    $(byText("Все регионы и населенные пункты")).shouldBe(visible).click();
-    $(byText("Москва")).click();
-    $(byText("Готово")).click();
-//    $("[test_id='filter_price']").shouldBe(interactable);
-//    $("[test_id='filter_sale_type']").click();
-
-    $("[test_id='filter_price']").shouldBe(interactable);
-    $("[test_id='filter_price']").click();
-    $(".search-bar-dropdown-dialog").shouldBe(visible);
-    $(".search-bar-dropdown-dialog input").sendKeys(Keys.BACK_SPACE);
-
-    $$("[test_id='filter_price'] input").get(0).setValue("11");
-    for(int i=1;i<5;i++)
-    {
-      $$("[test_id='filter_price'] input").get(1).sendKeys(Keys.BACK_SPACE);
-    }
-   $$("[test_id='filter_price'] input").get(1).setValue("55555");
-//    $(".range-slider__input--min")
-//    .shouldBe(interactable).sendKeys("1");
-//    $(".range-slider__input--max").setValue("55555");
-//    sleep(2000);
-   $(byText("Готово")).click();
-//    sleep(2000);
-
-    $("[test_id='filter_sale_type']").shouldBe(interactable);
-    $("[test_id='filter_sale_type']").click();
-    $("#filter-sale_type-direct_purchase").click();
-    $("#filter-sale_type-trade").click();
-    $("#filter-sale_type-bidding").click();
-    $(byText("Готово")).click();
-    $("[test_id='filter_seller']").shouldBe(interactable);
-    $("[test_id='filter_seller']").click();
-    $(".search-bar-sellers-dropdown").shouldBe(interactable);
-    $(byText("По типу")).click();
-    $("#filter-seller_type-bank").click();
-    $("#filter-seller_type-government").click();
-    $("#filter-seller_type-company").click();
-    $("#filter-seller_type-arbitration_manager").click();
-    $("#filter-seller_type-user").click();
-    $("#filter-seller_type-other").click();
-    $(byText("Готово")).click();
-    $(("[test_id='filter_pledge_status']"))
-      .shouldHave(text("Да"))
-      .click();
-    $(("[test_id='filter_bankruptcy']"))
-      .shouldHave(text("Да"))
-      .click();
-    $(("[test_id='filter_execution_procedure']"))
-      .shouldHave(text("Да"))
-      .click();
-    sleep(2000);
-    $(".base-dialog-card__btn-primary").click();
+    filter.openFilter();
+    filter.selectRegion();
+    filter.selectPriceRange();
+    filter.selectSaleMethod();
+    filter.verifySellerSelection();
+    filter.verifyPledgeStatus();
+    filter.verifyBankruptcy();
+    filter.verifyExecutionProcedure();
+    filter.clickShowButton();
   }
 }
