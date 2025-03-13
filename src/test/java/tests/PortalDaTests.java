@@ -16,6 +16,7 @@ public class PortalDaTests extends TestBase {
   FilterPage filter = new FilterPage();
   SearchInputPage searchInput = new SearchInputPage();
   ControlPage control = new ControlPage();
+  MainPage mainPage = new MainPage();
 
   @Test
   @Feature("Проверка поиска товара по категории")
@@ -24,8 +25,8 @@ public class PortalDaTests extends TestBase {
   @Severity(SeverityLevel.CRITICAL)
   @DisplayName("Проверка поиска {active} по категории каталога")
   void searchCatalogTest() {
-
-    open("/");
+    mainPage.openMainPage();
+    mainPage.checkMainHeader();
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
     search.clickOnSearchBarItem("Офисное помещение");
@@ -41,7 +42,8 @@ public class PortalDaTests extends TestBase {
   @Severity(SeverityLevel.CRITICAL)
   @DisplayName("Проверка поиска {} по строке ввода")
   void searchByInputString() {
-    open("/");
+    mainPage.openMainPage();
+    mainPage.checkMainHeader();
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
     searchInput.searchValue();
@@ -55,13 +57,16 @@ public class PortalDaTests extends TestBase {
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
   @Severity(SeverityLevel.TRIVIAL)
-  @DisplayName("Проверка контроллов")
+  @DisplayName("Проверка контролов")
   void checkControl() {
     Configuration.pollingInterval = 500;
-    open("/");
+    mainPage.openMainPage();
+    mainPage.checkMainHeader();
+    sleep(2500);
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
     control.searchItem();
+    sleep(2500);
     control.selectControl();
     control.checkControl();
     Selenide.clearBrowserCookies();
@@ -75,7 +80,8 @@ public class PortalDaTests extends TestBase {
   @Severity(SeverityLevel.BLOCKER)
   @DisplayName("Проверка фильтра")
   void checkFilter() {
-    open("/");
+    mainPage.openMainPage();
+    mainPage.checkMainHeader();
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
     filter.openFilter();

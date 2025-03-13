@@ -2,8 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -22,10 +21,12 @@ public class ControlPage {
   }
 
   public void selectControl() {
-    selectSlot.shouldBe(visible);
+    selectSlot.shouldBe(interactable);
     selectSlot.scrollIntoView(true);
-    inputControl.shouldBe(visible);
+    inputControl.shouldBe(interactable);
     inputControl.click();
+    value54.shouldBe(interactable);
+    value54.click();
   }
 
   public void checkControl() {
