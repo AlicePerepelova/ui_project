@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
@@ -19,6 +20,10 @@ public class PortalDaTests extends TestBase {
   MainPage mainPage = new MainPage();
 
   @Test
+  @Tags({
+    @Tag("SMOKE"),
+    @Tag("POSITIVE")
+  })
   @Feature("Проверка поиска товара по категории")
   @Story("Позитивный тест")
   @Owner("@perepelovaAS")
@@ -36,6 +41,7 @@ public class PortalDaTests extends TestBase {
   }
 
   @Test
+  @Tag("WEB")
   @Feature("Проверка поиска товара по строке ввода")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
@@ -48,7 +54,6 @@ public class PortalDaTests extends TestBase {
     cookie.acceptCookie();
     searchInput.searchValue();
     searchInput.checkSearchResult();
-    Selenide.clearBrowserCookies();
     Selenide.closeWebDriver();
   }
 
@@ -69,7 +74,6 @@ public class PortalDaTests extends TestBase {
     sleep(2500);
     control.selectControl();
     control.checkControl();
-    Selenide.clearBrowserCookies();
     closeWebDriver();
   }
 

@@ -44,13 +44,43 @@ test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+tasks.register('web_test', Test) {
+    useJUnitPlatform {
+        includeTags("WEB")
+    }
+}
+
+tasks.register('smoke_test', Test) {
+    useJUnitPlatform {
+        includeTags("SMOKE")
+    }
+}
+
+tasks.register('regression_test', Test) {
+    useJUnitPlatform {
+        includeTags("REGRESSION")
+    }
+}
+
+tasks.register('positive_test', Test) {
+    useJUnitPlatform {
+        includeTags("POSITIVE")
+    }
+}
+
+tasks.register('negative_test', Test) {
+    useJUnitPlatform {
+        includeTags("NEGATIVE")
     }
 }
