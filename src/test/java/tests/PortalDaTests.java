@@ -7,6 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -59,13 +61,18 @@ public class PortalDaTests extends TestBase {
     searchInput.checkSearchResult();
   }
 
-  @Test
+
   @Tag("POSITIVE")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
   @Severity(SeverityLevel.TRIVIAL)
   @DisplayName("Проверка контролов")
-  void checkControl() {
+  @ValueSource(ints = {
+    18, 27, 54
+  })
+  @ParameterizedTest
+  void checkControl(int testData) {
+
     Configuration.pollingInterval = 500;
     mainPage.openMainPage();
     mainPage.checkMainHeader();

@@ -2,6 +2,9 @@ package pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
@@ -15,27 +18,30 @@ public class ControlPage {
     active = $(byText("Офисное помещение")),
     selectSlot = $(".v-select__slot"),
     inputControl = $(".v-input__control"),
-    value54 = $(byText("54")),
     controlCount = $(".listing-footer-controls__count");
-    int countControl=54;
-  private final ElementsCollection collectionOfItem=$$(".asset-card__content-wrapper");
+  private final ElementsCollection collectionOfItem = $$(".asset-card__content-wrapper");
 
+  @Step("Поиск элементов категории 'Офисное помещение'")
   public void searchItem() {
     searchBar.click();
     active.click();
   }
 
-  public void selectControl() {
+  @Step("Выбор отображения {itemCount} элементов на странице")
+  public void selectControl(int itemCount) {
+    SelenideElement value = $(byText(String.valueOf(itemCount)));
+    value.shouldBe(interactable).click();
+
     selectSlot.shouldBe(interactable);
     selectSlot.scrollIntoView(true);
     inputControl.shouldBe(interactable);
     inputControl.click();
-    value54.shouldBe(interactable);
-    value54.click();
+    value.shouldBe(interactable).click();
   }
 
-  public void checkControl() {
-    collectionOfItem.shouldHave(sizeGreaterThan(countControl-1));
-    controlCount.shouldHave(text("Показано 54"));
+  @Step("Проверка, что отобразилось {int itemCount} элемента на странице")
+  public void checkControl(int itemCount) {
+    collectionOfItem.shouldHave(sizeGreaterThan(itemCount - 1));
+    controlCount.shouldHave(text("Показано " + itemCount));
   }
 }
