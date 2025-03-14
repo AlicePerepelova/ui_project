@@ -38,7 +38,6 @@ public class PortalDaTests extends TestBase {
     search.clickOnSearchBarItem("Офисное помещение");
     search.verifyCatalogContainsOfficeRooms("Офисное помещение");
     Selenide.clearBrowserCookies();
-    Selenide.closeWebDriver();
   }
 
   @Test
@@ -58,7 +57,6 @@ public class PortalDaTests extends TestBase {
     cookie.acceptCookie();
     searchInput.searchValue();
     searchInput.checkSearchResult();
-    Selenide.closeWebDriver();
   }
 
   @Test
@@ -78,7 +76,6 @@ public class PortalDaTests extends TestBase {
     sleep(2500);
     control.selectControl();
     control.checkControl();
-    closeWebDriver();
   }
 
   @Test

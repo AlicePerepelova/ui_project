@@ -1,9 +1,12 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import config.WebDriverProvider;
+import helpers.Attach;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -11,14 +14,15 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
   @BeforeEach
   void setUp() {
-    Configuration.browserSize = "1920x1080";
-    Configuration.pageLoadStrategy = "eager";
-    Configuration.baseUrl = "https://portal-da.ru";
+    WebDriverProvider.setUp();
   }
 
   @AfterEach
   public void tearDown() {
+    Attach.screenshotAs("Last screen");
+    Attach.addVideo();
+    Attach.browserConsoleLogs();
+    Attach.pageSource();
     closeWebDriver();
   }
-
 }
