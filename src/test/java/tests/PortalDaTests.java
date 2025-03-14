@@ -22,7 +22,8 @@ public class PortalDaTests extends TestBase {
   @Test
   @Tags({
     @Tag("SMOKE"),
-    @Tag("POSITIVE")
+    @Tag("POSITIVE"),
+    @Tag("WEB")
   })
   @Feature("Проверка поиска товара по категории")
   @Story("Позитивный тест")
@@ -41,7 +42,10 @@ public class PortalDaTests extends TestBase {
   }
 
   @Test
-  @Tag("WEB")
+  @Tags({
+    @Tag("WEB"),
+    @Tag("POSITIVE")
+  })
   @Feature("Проверка поиска товара по строке ввода")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
