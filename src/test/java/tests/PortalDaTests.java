@@ -71,18 +71,16 @@ public class PortalDaTests extends TestBase {
     18, 27, 54
   })
 
-  void checkControl(int testData) {
+  void checkControl(int itemCount) {
 
     Configuration.pollingInterval = 500;
     mainPage.openMainPage();
     mainPage.checkMainHeader();
-    sleep(2500);
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
     control.searchItem();
-    sleep(2500);
-    control.selectControl(testData);
-    control.checkControl(testData);
+    control.selectControl(itemCount);
+    control.checkControl(itemCount);
   }
 
   @Test

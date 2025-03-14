@@ -3,8 +3,6 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
