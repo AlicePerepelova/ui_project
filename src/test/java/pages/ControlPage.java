@@ -27,13 +27,12 @@ public class ControlPage {
 
   @Step("Выбор отображения {itemCount} элементов на странице")
   public void selectControl(int itemCount) {
-    SelenideElement value = $(byText(String.valueOf(itemCount)));
-    value.shouldBe(interactable).click();
-
     selectSlot.shouldBe(interactable);
     selectSlot.scrollIntoView(true);
     inputControl.shouldBe(interactable);
     inputControl.click();
+    SelenideElement value = $(byText(String.valueOf(itemCount)));
+    value.shouldBe(interactable).click();
     value.shouldBe(interactable).click();
   }
 
