@@ -61,7 +61,7 @@ public class PortalDaTests extends TestBase {
     searchInput.checkSearchResult();
   }
 
-
+  @ParameterizedTest
   @Tag("POSITIVE")
   @Story("Позитивный тест")
   @Owner("@perepelovaas")
@@ -70,7 +70,7 @@ public class PortalDaTests extends TestBase {
   @ValueSource(ints = {
     18, 27, 54
   })
-  @ParameterizedTest
+
   void checkControl(int testData) {
 
     Configuration.pollingInterval = 500;
@@ -81,8 +81,8 @@ public class PortalDaTests extends TestBase {
     cookie.acceptCookie();
     control.searchItem();
     sleep(2500);
-    control.selectControl();
-    control.checkControl();
+    control.selectControl(testData);
+    control.checkControl(testData);
   }
 
   @Test
