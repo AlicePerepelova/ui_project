@@ -18,7 +18,7 @@ public class ControlPage {
     value54 = $(byText("54")),
     controlCount = $(".listing-footer-controls__count");
     int countControl=54;
-  private final ElementsCollection collectionOfItem=$$(".catalog-grid");
+  private final ElementsCollection collectionOfItem=$$(".asset-card__content-wrapper");
 
   public void searchItem() {
     searchBar.click();
