@@ -24,7 +24,9 @@ allure {
         }
     }
 }
-
+//dependencies {
+//    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+//}
 dependencies {
     testImplementation(
             "io.rest-assured:rest-assured:$restAssuredVersion",
@@ -35,6 +37,7 @@ dependencies {
             'org.assertj:assertj-core:3.24.2',
             'org.aeonbits.owner:owner:1.0.12',
             'com.codeborne:selenide:7.7.3',
+
 
     )
     compileOnly 'org.projectlombok:lombok:1.18.30'

@@ -21,7 +21,12 @@ public class PortalDaTests extends TestBase {
   ControlPage control = new ControlPage();
   MainPage mainPage = new MainPage();
 
-  @Test
+  @ParameterizedTest
+  @ValueSource(strings = {
+    "Офисное помещение",
+    "Комерческое помещение",
+    "Автомобильный транспорт"
+  })
   @Tags({
     @Tag("SMOKE"),
     @Tag("POSITIVE"),
@@ -32,14 +37,13 @@ public class PortalDaTests extends TestBase {
   @Owner("@perepelovaAS")
   @Severity(SeverityLevel.CRITICAL)
   @DisplayName("Проверка поиска {active} по категории каталога")
-  void searchCatalogTest() {
+  void searchCatalogTest(String active) {
     mainPage.openMainPage();
     mainPage.checkMainHeader();
     cookie.checkCookiePopupDisplay();
     cookie.acceptCookie();
-    search.clickOnSearchBarItem("Офисное помещение");
-    search.verifyCatalogContainsOfficeRooms("Офисное помещение");
-    Selenide.clearBrowserCookies();
+    search.clickOnSearchBarItem(active);
+    search.verifyCatalogContainsOfficeRooms(active);
   }
 
   @Test
