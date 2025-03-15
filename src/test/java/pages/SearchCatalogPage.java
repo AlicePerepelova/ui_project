@@ -14,7 +14,7 @@ public class SearchCatalogPage {
   //private final String active = "Офисное помещение";
   private final SelenideElement searchBarItem = $(".search-bar-item__right");
 
-  private final SelenideElement pageTitleElement = $(".content-layout__title");
+  private final SelenideElement pageTitleElement = $("h1.content-layout__title");
   private final ElementsCollection catalogGrid = $$(".catalog-grid");
 
 
