@@ -24,8 +24,9 @@ public class PortalDaTests extends TestBase {
   @ParameterizedTest
   @ValueSource(strings = {
     "Офисное помещение",
-    "Комерческое помещение",
-    "Автомобильный транспорт"
+    "Земельные участки",
+    "Жилая недвижимость",
+    "Оборудование"
   })
   @Tags({
     @Tag("SMOKE"),
@@ -36,7 +37,7 @@ public class PortalDaTests extends TestBase {
   @Story("Позитивный тест")
   @Owner("@perepelovaAS")
   @Severity(SeverityLevel.CRITICAL)
-  @DisplayName("Проверка поиска {active} по категории каталога")
+  @DisplayName("Проверка поиска по категории каталога")
   void searchCatalogTest(String active) {
     mainPage.openMainPage();
     mainPage.checkMainHeader();
