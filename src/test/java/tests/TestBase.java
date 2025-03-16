@@ -13,9 +13,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
   @BeforeEach
-  void setUp() {
-    WebDriverProvider.setUp();
-  }
+  void setUp() { WebDriverProvider.setUp(); }
 
   @AfterEach
   public void tearDown() {
