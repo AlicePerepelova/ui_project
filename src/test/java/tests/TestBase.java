@@ -1,12 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import config.WebDriverProvider;
-import helpers.Attach;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
