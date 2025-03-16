@@ -1,16 +1,14 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
-import lombok.extern.slf4j.Slf4j;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 import java.util.Map;
 
-@Slf4j
 public class WebDriverProvider {
-  private static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());;
+  private static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
 
   public WebDriverProvider(WebConfig config){
     this.config = config;
