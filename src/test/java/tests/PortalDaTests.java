@@ -24,8 +24,7 @@ public class PortalDaTests extends TestBase {
   @ParameterizedTest
   @ValueSource(strings = {
     "Офисное помещение",
-    "Земельные участки",
-    "Жилая недвижимость",
+    "Производство",
     "Оборудование"
   })
   @Tags({
