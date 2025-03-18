@@ -7,7 +7,7 @@
 <h1 align="center">Проект по автоматизации тестирования онлайн сервиса от Сбербанка</h1>
 
 <p align="center">
-<a href="https://sport-marafon.ru/"><img title="Allure Overview" src="media/logo/sportmarafon.png"></a>
+<a href="https://portal-da.ru/"><img title="Allure Overview" src="media/logo/sber.svg"> </a>
 </p>
 
 > 
@@ -76,7 +76,7 @@ ____
 <p align="center">
 <img title="Jenkins Build" src="media/screenshots/jenkins.png">
 </p>
-После выполнения сборки, в блоке <code>Build History</code> напротив номера сборки появятся значки <code>Allure Report</code> и <code>Allure TestOps</code>, при клике на которые откроется страница с сформированным html-отчетом и тестовой документацией соответственно.
+После выполнения сборки, в блоке <code>Build History</code> напротив номера сборки появится значок <code>Allure Report</code>  при клике на который откроется страница с сформированным html-отчетом.
 
 ____
 <a id="allureReport"></a>
@@ -84,15 +84,6 @@ ____
 <p align="center">
 <img title="Allure Overview" src="media/screenshots/allure.png">
 </p>
-
----
-<a id="allure"></a>
-## <img width="30" style="vertical-align:middle" title="Allure TestOps" src="media/logo/allureTestOps.svg"> </a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/4009/dashboards"> Allure TestOps </a>
-На *Dashboard* в <code>Allure TestOps</code> видна статистика количества тестов: сколько из них добавлены и проходятся вручную, сколько автоматизированы. Новые тесты, а так же результаты прогона приходят по интеграции при каждом запуске сборки.
-<p align="center">
-<img title="Allure Overview" src="media/screenshots/allureTestOps.png">
-</p>
-
 
 ____
 <a id="tg"></a>
