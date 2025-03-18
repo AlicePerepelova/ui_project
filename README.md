@@ -60,7 +60,7 @@ ____
 
 ---
 <a id="jenkins"></a>
-## <img width="20" style="vertical-align:middle" title="Jenkins" src="media/logo/jenkins.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/job/sport-marafon-tests/"> Jenkins </a>
+## <img width="20" style="vertical-align:middle" title="Jenkins" src="src/media/logo/jenkins.svg"> </a> Сборка в <a target="_blank" href="https://jenkins.autotests.cloud/job/sport-marafon-tests/"> Jenkins </a>
 Для доступа в Jenkins необходима регистрация на ресурсе [Jenkins](https://jenkins.autotests.cloud/)
 Для запуска сборки необходимо перейти в раздел <code>Build with parameters</code>, выбрать необходимые параметры и нажать кнопку <code>Build</code>.
 ###  Параметры сборки в Jenkins:
@@ -77,14 +77,14 @@ ____
 
 ____
 <a id="allureReport"></a>
-## <img width="30" style="vertical-align:middle" title="Allure Report" src="media/logo/allure.svg"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/job/sport-marafon-tests/8/allure/"> Allure-отчета </a>
+## <img width="30" style="vertical-align:middle" title="Allure Report" src="src/media/logo/allure.svg"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/job/alice-lilo-032-diplom_ui/8/allure/"> Allure-отчета </a>
 <p align="center">
 <img title="Allure Overview" src="src/media/screenshots/allure.png">
 </p>
 
 ____
 <a id="tg"></a>
-## <img width="30" style="vertical-align:middle" title="Telegram" src="media/logo/telegram.svg"> Уведомления в Telegram с использованием бота
+## <img width="30" style="vertical-align:middle" title="Telegram" src="src/media/logo/telegram.svg"> Уведомления в Telegram с использованием бота
 После завершения сборки, бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов в специально настроенный чат.
 <p align="center">
 <img width="40%" title="Telegram Notifications" src="src/media/screenshots/telegram.png">
