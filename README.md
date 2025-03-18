@@ -7,7 +7,7 @@
 <h1 align="center">Проект по автоматизации тестирования онлайн сервиса от Сбербанка</h1>
 
 <p align="center">
-<a href="https://portal-da.ru/"><img title="Allure Overview" src="media/logo/sber.svg"> </a>
+<a href="https://portal-da.ru/"><img title="Allure Overview" src="src/media/logo/sber.svg"> </a>
 </p>
 
 > 
@@ -92,7 +92,7 @@ ____
 
 ____
 <a id="video"></a>
-## <img width="30" style="vertical-align:middle" title="Selenoid" src="media/logo/Selenoid.svg"> Видео примера запуска тестов в Selenoid
+## <img width="30" style="vertical-align:middle" title="Selenoid" src="src/media/logo/Selenoid.svg"> Видео примера запуска тестов в Selenoid
 В отчетах Allure для каждого теста прикреплен не только скриншот, но и видео прохождения теста
 <p align="center">
   <img title="Selenoid Video" src="media/screenshots/video.gif">
