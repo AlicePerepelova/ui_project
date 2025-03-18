@@ -43,9 +43,6 @@ Auto:
 - Проверка контролов
 - Проверка применения Фильтров
 
-Manual:
-- Проверка регистрации если не прошли капчу
-
 <a id="autotests"></a>
 ____
 ## ▶️ Запуск автотестов
@@ -74,7 +71,7 @@ ____
 - BROWSER_SIZE (размер окна браузера)
 - 
 <p align="center">
-<img title="Jenkins Build" src="media/screenshots/jenkins.png">
+<img title="Jenkins Build" src="src/media/screenshots/jenkins.png">
 </p>
 После выполнения сборки, в блоке <code>Build History</code> напротив номера сборки появится значок <code>Allure Report</code>  при клике на который откроется страница с сформированным html-отчетом.
 
@@ -82,7 +79,7 @@ ____
 <a id="allureReport"></a>
 ## <img width="30" style="vertical-align:middle" title="Allure Report" src="media/logo/allure.svg"> </a> Пример <a target="_blank" href="https://jenkins.autotests.cloud/job/sport-marafon-tests/8/allure/"> Allure-отчета </a>
 <p align="center">
-<img title="Allure Overview" src="media/screenshots/allure.png">
+<img title="Allure Overview" src="src/media/screenshots/allure.png">
 </p>
 
 ____
@@ -90,7 +87,7 @@ ____
 ## <img width="30" style="vertical-align:middle" title="Telegram" src="media/logo/telegram.svg"> Уведомления в Telegram с использованием бота
 После завершения сборки, бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов в специально настроенный чат.
 <p align="center">
-<img width="40%" title="Telegram Notifications" src="media/screenshots/telegram.png">
+<img width="40%" title="Telegram Notifications" src="src/media/screenshots/telegram.png">
 </p>
 
 ____
