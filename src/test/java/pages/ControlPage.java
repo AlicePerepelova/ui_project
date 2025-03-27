@@ -27,8 +27,9 @@ public class ControlPage {
 
   @Step("Выбор отображения {itemCount} элементов на странице")
   public void selectControl(int itemCount) {
+    selectSlot.scrollTo();
     selectSlot.shouldBe(interactable);
-    selectSlot.scrollIntoView(true);
+   // selectSlot.scrollIntoView(true);
     inputControl.shouldBe(interactable);
     inputControl.click();
     SelenideElement value = $(byText(String.valueOf(itemCount)));
