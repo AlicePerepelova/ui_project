@@ -7,8 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ControlPage {
   private final SelenideElement
@@ -27,9 +26,7 @@ public class ControlPage {
 
   @Step("Выбор отображения {itemCount} элементов на странице")
   public void selectControl(int itemCount) {
-    selectSlot.scrollTo();
-    selectSlot.shouldBe(interactable);
-   // selectSlot.scrollIntoView(true);
+    actions().moveToElement(selectSlot).perform();
     inputControl.shouldBe(interactable);
     inputControl.click();
     SelenideElement value = $(byText(String.valueOf(itemCount)));
